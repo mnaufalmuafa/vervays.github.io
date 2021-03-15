@@ -8,13 +8,13 @@
 
   <link 
     rel="stylesheet" 
-    href="/css/library/bootstrap.min.css">
+    href="css/library/bootstrap.min.css">
   <link 
     href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700;800&display=swap" 
     rel="stylesheet">
   <link 
     rel="stylesheet" 
-    href="/css/component/navbar.css">
+    href="css/component/navbar.css">
   <link 
     rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +26,7 @@
   <!-- Navabar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ route('dashboard') }}">
-      <img src="{{ url('image/navbar/navbar_brand4.png') }}" alt="">
+      <img src="asset/logo/navbar_brand.png" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="{{ route('wishlist') }}">
             <img 
-              src="{{ url('image/navbar/ic_heart.png') }}" 
+              src="asset/ikon/ic_heart.png" 
               alt=""
               class="icon">
           </a>
@@ -57,7 +57,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('cart') }}">
             <img 
-              src="{{ url('image/navbar/ic_cart.png') }}" 
+              src="asset/ikon/ic_cart.png" 
               alt=""
               class="icon">
           </a>
@@ -65,9 +65,9 @@
         <div class="separator" id="navbarSeparator"></div>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ $firstName }}
+            Naufal
             <img 
-              src="{{ url('image/navbar/ic_account.png') }}" 
+              src="asset/ikon/ic_account.png" 
               alt=""
               class="icon">
           </a>
@@ -88,25 +88,25 @@
       class="d-flex justify-content-between"
       id="firstResponsiveNavbarSection">
       <img 
-        src="{{ url('image/navbar/toggler.png') }}" 
+        src="asset/image/toggler.png" 
         alt=""
         class="icon"
         isCollapsed="1"
         id="nav-toggler">
       <a 
         href="/">
-        <img src="/image/navbar/logo_vv.png" alt="">
+        <img src="asset/logo/logo_vv.png" alt="">
       </a>
       <div>
         <a class="" href="{{ route('wishlist') }}">
           <img 
-            src="{{ url('image/navbar/ic_heart.png') }}" 
+            src="asset/ikon/ic_heart.png" 
             alt=""
             class="icon mr-3">
         </a>
         <a class="" href="{{ route('cart') }}">
           <img 
-            src="{{ url('image/navbar/ic_cart.png') }}" 
+            src="asset/ikon/ic_cart.png" 
             alt=""
             class="icon">
         </a>
