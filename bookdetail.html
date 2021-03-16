@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toko Ebook Vervays</title>
+
+  <link 
+    rel="stylesheet" 
+    href="css/library/bootstrap.min.css">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700;800&display=swap" 
+    rel="stylesheet">
+  <link 
+    rel="stylesheet" 
+    href="css/component/navbar.css">
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+  <link
+    rel="stylesheet"
+    href="css/view/bookdetail.css">
+</head>
+<body>
+  <!-- Navabar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="">
+      <img src="asset/logo/navbar_brand.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="input-group mr-5">
+      <input 
+        type="text"
+        id="defaultSearchBar"
+        class="form-control" 
+        placeholder="Buku apa yang sedang anda cari?"
+        aria-label="Amount (to the nearest dollar)">
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ route('wishlist') }}">
+            <img 
+              src="asset/ikon/ic_heart.png" 
+              alt=""
+              class="icon">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('cart') }}">
+            <img 
+              src="asset/ikon/ic_cart.png" 
+              alt=""
+              class="icon">
+          </a>
+        </li>
+        <div class="separator" id="navbarSeparator"></div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Naufal
+            <img 
+              src="asset/ikon/ic_account.png" 
+              alt=""
+              class="icon">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('bookCollection') }}">Koleksi Buku</a>
+            <a class="dropdown-item linkMenjadiPublisher">Menu Publisher</a>
+            <a class="dropdown-item" href="{{ route('orders') }}">Daftar Pesanan</a>
+            <a class="dropdown-item" href="{{ route('account-setting') }}">Pengaturan akun</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item linkLogout" href="">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="responsive-navbar">
+    <section 
+      class="d-flex justify-content-between"
+      id="firstResponsiveNavbarSection">
+      <img 
+        src="asset/image/toggler.png" 
+        alt=""
+        class="icon"
+        isCollapsed="1"
+        id="nav-toggler">
+      <a 
+        href="/">
+        <img src="asset/logo/logo_vv.png" alt="">
+      </a>
+      <div>
+        <a class="" href="{{ route('wishlist') }}">
+          <img 
+            src="asset/ikon/ic_heart.png" 
+            alt=""
+            class="icon mr-3">
+        </a>
+        <a class="" href="{{ route('cart') }}">
+          <img 
+            src="asset/ikon/ic_cart.png" 
+            alt=""
+            class="icon">
+        </a>
+      </div>
+    </section>
+  
+    <section id="collapsedSection">
+      <div class="input-group mr-5">
+        <input 
+          type="text"
+          id="responsiveSearchBar"
+          class="form-control" 
+          placeholder="Buku apa yang sedang anda cari?"
+          aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+      </div>
+      <a
+        class="d-block"
+        href="{{ route('bookCollection') }}">Koleksi Buku</a>
+      <a
+        class="d-block linkMenjadiPublisher"
+        href="">Menu Publisher</a>
+      <a
+        class="d-block"
+        href="{{ route('orders') }}">Daftar Pesanan</a>
+      <a
+        class="d-block"
+        href="{{ route('account-setting') }}">Pengaturan Akun</a>
+      <hr>
+      <a
+        class="d-block linkLogout"
+        href="">Logout</a>
+    </section>
+  </nav>
+  <!-- End Navbar -->
+
+  <div class="container-fluid" id="main-container">
+    <div class="row mt-2">
+      <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="d-flex justify-content-center">
+          <img 
+            src="asset/image/book_cover/4.jpg" 
+            alt=""
+            class="ebook-cover">
+        </div>
+        <h5>Rp. 762.000</h5>
+        <section class="first-section-clone d-block d-sm-block d-md-none d-lg-none d-xl-none">
+          <h2>Unscrumbled Eggs</h2>
+          <p class="author-info">Ditulis oleh <span>Nadia Janice Brown</span></p>
+          <div class="row rating-row">
+            <img 
+              :src="this.rating | starURL(1)"
+              alt=""
+              class="star-image d-inline first-star">
+            <img 
+              :src="this.rating | starURL(2)"
+              alt=""
+              class="star-image d-inline second-star">
+            <img 
+              :src="this.rating | starURL(3)"
+              alt=""
+              class="star-image d-inline third-star">
+            <img 
+              :src="this.rating | starURL(4)"
+              alt=""
+              class="star-image d-inline fourth-star">
+            <img 
+              :src="this.rating | starURL(5)"
+              alt=""
+              class="star-image d-inline fifth-star">
+            <p class="d-inline-block rating mt-1 ml-2">5.0</p>
+            <p class="d-inline-block rating-count mt-1 ml-3">(2 Ulasan)</p>
+          </div>
+          <p class="order-sold-info">4 kali terjual</p>
+          <hr>
+        </section>
+        <div class="button-container mt-4" role="1" id="button-container">
+          <button class="button-aside" id="btnReadSample" onclick="redirectToReadSamplePage()">Baca Sample</button>
+          <button class="button-aside" id="btnAddToCart">Tambah ke Keranjang</button>
+          <button class="button-aside" id="btnAddToWishlist">Tambah ke Wishlist</button>
+          <button class="button-aside" id="btnBuy">Beli</button>
+        </div>
+        <hr class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
+      </div>
+      <div class="col-12 col-sm-12 col-md-10 col-md-10 col-xl-10">
+        <section class="first-section d-none d-sm-none d-md-block d-lg-block d-xl-block">
+          <h2>Unscrumbled Eggs</h2>
+          <p class="author-info">Ditulis oleh <span>Nadia Janice Brown</span></p>
+          <div class="row rating-row">
+            <img 
+              src="asset/ikon/yellow_star.png"
+              alt=""
+              class="star-image d-inline first-star">
+            <img 
+              src="asset/ikon/yellow_star.png"
+              alt=""
+              class="star-image d-inline second-star">
+            <img 
+              src="asset/ikon/yellow_star.png"
+              alt=""
+              class="star-image d-inline third-star">
+            <img 
+              src="asset/ikon/yellow_star.png"
+              alt=""
+              class="star-image d-inline fourth-star">
+            <img 
+              src="asset/ikon/yellow_star.png"
+              alt=""
+              class="star-image d-inline fifth-star">
+            <p class="d-inline-block rating mt-1 ml-2">5.0</p>
+            <p class="d-inline-block rating-count mt-1 ml-3">(2 Ulasan)</p>
+          </div>
+          <p class="order-sold-info">4 kali terjual</p>
+          <hr>
+        </section>
+        <section class="synopsis-section">
+          <h4>Abstraksi</h4>
+          <div id="textSynopsis" style="white-space: pre-wrap">Profound and riveting, this is a 60 poem book collection with poetry that enlightens, speaks the way of life and the world. The poems from Unscrambled Eggs has a universal appeal, and is true to life in form. Unscrambled Eggs was written over a five year period and is an honest and thought-provoking book that deals with everyday life issues. It is a stirring compilation of poems about living your dream and finding one's purpose.
+          </div>
+          <hr>
+        </section>
+        <section class="detail-section">
+          <h4>Detail Buku</h4>
+          <div class="row">
+            <div class="d-inline">
+              <p>Bahasa</p>
+              <p>Penerbit</p>
+              <p>Penulis</p>
+              <p>Kategori</p>
+              <p>Jumlah halaman &ensp;</p>
+              <p>Terbit</p>
+            </div>
+            <div class="d-inline">
+              <p>: Inggris</p>
+              <p id="publisherText">: <span>Many Books</span></p>
+              <p>: Nadia Janice Brown</p>
+              <p>: Novel</p>
+              <p>: 69</p>
+              <p id="relaseDate">: <span>23 September 2015</span></p>
+            </div>
+          </div>
+          <hr>
+        </section>
+        <section class="rating-section">
+          <h4>Rating dan Ulasan</h4>
+          <div class="row">
+            <div class="d-inline">
+              <div class="text-center">
+                <h1 class="d-inline rating">5.0</h1>
+                <p class="d-inline">/5</p>
+              </div>
+              <div class="row rating-row mt-1 mb-2">
+                <img 
+                  src="asset/ikon/yellow_star.png"
+                  alt=""
+                  class="star-image d-inline first-star">
+                <img 
+                  src="asset/ikon/yellow_star.png"
+                  alt=""
+                  class="star-image d-inline second-star">
+                <img 
+                  src="asset/ikon/yellow_star.png"
+                  alt=""
+                  class="star-image d-inline third-star">
+                <img 
+                  src="asset/ikon/yellow_star.png"
+                  alt=""
+                  class="star-image d-inline fourth-star">
+                <img 
+                  src="asset/ikon/yellow_star.png"
+                  alt=""
+                  class="star-image d-inline fifth-star">
+              </div>
+              <p class="rating-count text-center">2 Ulasan</p>
+            </div>
+            <div class="d-inline pl-5">
+              <div class="row rating-row-progress" id="fifth-rating-row">
+                <img 
+                  src="{{ url('image/icon/yellow_star.png') }}"
+                  alt=""
+                  class="star-image d-inline first-star">
+                <p class="d-inline-block mt-1 ml-1 font-weight-bold">5</p>
+                <div class="custom-progress mt-2 ml-2">
+                  <div class="loaded" style="width: 100%;"></div>
+                </div>
+                <p class="mt-1 ml-2">2</p>       
+              </div>
+              <div class="row rating-row-progress" id="fourth-rating-row">
+                <img 
+                  src="{{ url('image/icon/yellow_star.png') }}"
+                  alt=""
+                  class="star-image d-inline first-star">
+                <p class="d-inline-block mt-1 ml-1 font-weight-bold">4</p>
+                <div class="custom-progress mt-2 ml-2">
+                  <div class="loaded"></div>
+                </div>
+                <p class="mt-1 ml-2">0</p>       
+              </div>
+              <div class="row rating-row-progress" id="third-rating-row">
+                <img 
+                  src="{{ url('image/icon/yellow_star.png') }}"
+                  alt=""
+                  class="star-image d-inline first-star">
+                <p class="d-inline-block mt-1 ml-1 font-weight-bold">3</p>
+                <div class="custom-progress mt-2 ml-2">
+                  <div class="loaded"></div>
+                </div>
+                <p class="mt-1 ml-2">0</p>       
+              </div>
+              <div class="row rating-row-progress" id="second-rating-row">
+                <img 
+                  src="{{ url('image/icon/yellow_star.png') }}"
+                  alt=""
+                  class="star-image d-inline first-star">
+                <p class="d-inline-block mt-1 ml-1 font-weight-bold">2</p>
+                <div class="custom-progress mt-2 ml-2">
+                  <div class="loaded"></div>
+                </div>
+                <p class="mt-1 ml-2">0</p>       
+              </div>
+              <div class="row rating-row-progress" id="first-rating-row">
+                <img 
+                  src="{{ url('image/icon/yellow_star.png') }}"
+                  alt=""
+                  class="star-image d-inline first-star">
+                <p class="d-inline-block mt-1 ml-1 font-weight-bold">1</p>
+                <div class="custom-progress mt-2 ml-2">
+                  <div class="loaded"></div>
+                </div>
+                <p class="mt-1 ml-2">0</p>       
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="review-section mt-4">
+          <div 
+            id="reviews-container">
+            <div>
+              <div class="card-custom" id="rating-">
+                <div class="rating-row">
+                  <div class="row rating-row mt-1">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline first-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline second-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline third-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline fourth-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline fifth-star">
+                    <p class="reviewer d-inline-block mt-1 ml-4 font-weight-bold">Isa</p>
+                  </div>
+                </div>
+                <p class="review">
+                  Ceritanya Bagus
+                </p>
+                <div class="review-date-row">
+                  <p class="review-date">23 Februari 2020</p>
+                </div>
+              </div>
+              <div class="card-custom" id="rating-">
+                <div class="rating-row">
+                  <div class="row rating-row mt-1">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline first-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline second-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline third-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline fourth-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image d-inline fifth-star">
+                    <p class="reviewer d-inline-block mt-1 ml-4 font-weight-bold">Kintan</p>
+                  </div>
+                </div>
+                <p class="review">
+                  Ceritanya Menghibur
+                </p>
+                <div class="review-date-row">
+                  <p class="review-date">14 Maret 2020</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-none">
+            <button
+              class="mb-5 ml-2 button" id="btnLoadMore"
+              @click="loadMore()">Muat Lebih</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/library/jquery-3.4.1.min.js"></script>
+  <script src="js/library/bootstrap.min.js"></script>
+  <script src="js/general.js"></script>
+  <script src="js/component/navbar.js"></script>
+</body>
+</html>
