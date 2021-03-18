@@ -64,6 +64,20 @@ var search = new Vue({
         price : "Rp. 657.000",
       }
     ],
+    languages : [
+      {
+        namaBahasa : "Inggris",
+        isUsed : false,
+      }
+    ],
+    categories : [
+      {
+        namaKategori : "Novel",
+        isUsed : false,
+      }
+    ],
+    sortingMethod : "bestseller",
+    isInfoBookNotFoundAfterFilterShowed : false,
   },
   filters : {
     ebookCoverURL : function(value, extension) {

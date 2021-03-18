@@ -204,7 +204,7 @@
                 @click="listCategoryOnClickListener(category.namaKategori)"
                 :id="category.namaKategori"
                 class="li-category-child">
-                <p class="d-inline category-name">Nama Kategori</p>
+                <p class="d-inline category-name">{{ category.namaKategori }}</p>
                 <div v-if="categories[index].isUsed === false" class="float-right d-none">
                   <i class="fa fa-fw fa-check d-inline"></i>
                 </div>
@@ -238,7 +238,7 @@
               v-for="(language, index) in languages">
               <div
                 @click="listLanguageOnClickListener(language.namaBahasa)">
-                <p class="d-inline category-name">Nama Bahasa</p>
+                <p class="d-inline category-name">{{ language.namaBahasa }}</p>
                 <div v-if="languages[index].isUsed === false" class="float-right d-none">
                   <i class="fa fa-fw fa-check d-inline"></i>
                 </div>
