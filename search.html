@@ -258,14 +258,14 @@
         </div>
         <div id="productRow">
           <div
-            v-if="isBookFiltered(book.Category, book.Language)">
+            v-for="(book, index) in books">
             <div 
               class="row card-book"
               rating="4.5"
               id="book">
               <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
                 <img 
-                  src="asset/image/book_cover/4.jpg" 
+                  :src="book.id | ebookCoverURL(book.extension)" 
                   alt=""
                   class="ebook-image"
                   book-id="id">
@@ -273,11 +273,11 @@
               <div class="col-xl-10 col-xl-10 col-md-10 col-sm-10 col-10">
                 <h4
                   class="book-title"
-                  book-id="">Judul Buku</h4>
+                  book-id="">{{ book.title }}</h4>
                 <p
-                  class="font-weight-bold author-info"><span>Ditulis oleh </span><span class="author-text">Penulis</span></p>
+                  class="font-weight-bold author-info"><span>Ditulis oleh </span><span class="author-text">{{ book.author }}</span></p>
                 <p
-                  class="synopsis">Profound and riveting, this is a 60 poem book collection with poetry that enlightens, speaks the way of life and the world. The poems from Unscrambled Eggs has a universal appeal, and is true to life in form. Unscrambled Eggs was written over a five year period and is an honest and thought-provoking book that deals with everyday life issues. It is a stirring compilation of poems about living your dream and finding one's purpose.</p>
+                  class="synopsis">{{ book.synopsis }}</p>
                 <div class="book-rating-container">
                   <div class="star-container d-inline">
                     <img 
@@ -297,11 +297,11 @@
                       alt=""
                       class="star-image fourth-star">
                     <img
-                      src="asset/ikon/blank_star.png"
+                      :src="book.rating | fifthStarURL()"
                       alt=""
                       class="star-image fifth-star">
                   </div>
-                  <p class="d-inline mt-1"><span class="rating">(4.0)</span> &emsp; (<span class="ratingCount">5</span> Ulasan) &emsp; <span class="soldCount">21</span>x terjual</p>
+                  <p class="d-inline mt-1"><span class="rating">({{ book.rating }})</span> &emsp; (<span class="ratingCount">{{ book.ratingCount }}</span> Ulasan) &emsp; <span class="soldCount">{{ book.soldCount }}</span>x terjual</p>
                 </div>
                 <p 
                   class="price font-weight-bold d-inline"><span class="price">Rp. 24.000</span></p>
@@ -313,8 +313,10 @@
   </div>
 
   <script src="js/library/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="js/library/bootstrap.min.js"></script>
   <script src="js/general.js"></script>
   <script src="js/component/navbar.js"></script>
+  <script src="js/view/search.js"></script>
 </body>
 </html>
