@@ -13,6 +13,7 @@ var search = new Vue({
         rating : "5.0",
         ratingCount : 3,
         soldCount : 13,
+        price : "Rp. 55.000",
       },
       {
         title : "From Silicon Valley to Swaziland",
@@ -37,6 +38,7 @@ var search = new Vue({
         rating : "5.0",
         ratingCount : 14,
         soldCount : 23,
+        price : "Rp. 896.000",
       },
       {
         title : "Beach Town Apocalypse",
@@ -59,6 +61,7 @@ var search = new Vue({
         rating : "4.0",
         ratingCount : 5,
         soldCount : 56,
+        price : "Rp. 657.000",
       }
     ],
   },
