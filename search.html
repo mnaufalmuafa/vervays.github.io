@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search</title>
+
+  <link 
+    rel="stylesheet" 
+    href="css/library/bootstrap.min.css">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700;800&display=swap" 
+    rel="stylesheet">
+  <link 
+    rel="stylesheet" 
+    href="css/component/navbar.css">
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link 
+    rel="stylesheet" 
+    href="css/view/search.css">
+</head>
+<body>
+  <!-- Navabar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="">
+      <img src="asset/logo/navbar_brand.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="input-group mr-5">
+      <input 
+        type="text"
+        id="defaultSearchBar"
+        class="form-control" 
+        placeholder="Buku apa yang sedang anda cari?"
+        aria-label="Amount (to the nearest dollar)">
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ route('wishlist') }}">
+            <img 
+              src="asset/ikon/ic_heart.png" 
+              alt=""
+              class="icon">
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('cart') }}">
+            <img 
+              src="asset/ikon/ic_cart.png" 
+              alt=""
+              class="icon">
+          </a>
+        </li>
+        <div class="separator" id="navbarSeparator"></div>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Naufal
+            <img 
+              src="asset/ikon/ic_account.png" 
+              alt=""
+              class="icon">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('bookCollection') }}">Koleksi Buku</a>
+            <a class="dropdown-item linkMenjadiPublisher">Menu Publisher</a>
+            <a class="dropdown-item" href="{{ route('orders') }}">Daftar Pesanan</a>
+            <a class="dropdown-item" href="{{ route('account-setting') }}">Pengaturan akun</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item linkLogout" href="">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <nav class="responsive-navbar">
+    <section 
+      class="d-flex justify-content-between"
+      id="firstResponsiveNavbarSection">
+      <img 
+        src="asset/image/toggler.png" 
+        alt=""
+        class="icon"
+        isCollapsed="1"
+        id="nav-toggler">
+      <a 
+        href="/">
+        <img src="asset/logo/logo_vv.png" alt="">
+      </a>
+      <div>
+        <a class="" href="{{ route('wishlist') }}">
+          <img 
+            src="asset/ikon/ic_heart.png" 
+            alt=""
+            class="icon mr-3">
+        </a>
+        <a class="" href="{{ route('cart') }}">
+          <img 
+            src="asset/ikon/ic_cart.png" 
+            alt=""
+            class="icon">
+        </a>
+      </div>
+    </section>
+  
+    <section id="collapsedSection">
+      <div class="input-group mr-5">
+        <input 
+          type="text"
+          id="responsiveSearchBar"
+          class="form-control" 
+          placeholder="Buku apa yang sedang anda cari?"
+          aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+          <span class="input-group-text">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+      </div>
+      <a
+        class="d-block"
+        href="{{ route('bookCollection') }}">Koleksi Buku</a>
+      <a
+        class="d-block linkMenjadiPublisher"
+        href="">Menu Publisher</a>
+      <a
+        class="d-block"
+        href="{{ route('orders') }}">Daftar Pesanan</a>
+      <a
+        class="d-block"
+        href="{{ route('account-setting') }}">Pengaturan Akun</a>
+      <hr>
+      <a
+        class="d-block linkLogout"
+        href="">Logout</a>
+    </section>
+  </nav>
+  <!-- End Navbar -->
+
+  <div class="container-fluid" id="searchPage">
+    <div class="row justify-content-between mt-3 mx-1 first-row">
+      <p class="col" id="keyword">Hasil pencarian untuk "a"</p>
+      <div class="col" id="orderOptionWrapper1">
+        <select 
+          name="" 
+          id="orderOption" 
+          class="d-inline float-right ml-2" 
+          v-model="sortingMethod" >
+          <option value="bestseller" selected>Bestseller</option>
+          <option value="tertinggi">Harga - Tertinggi ke terendah</option>
+          <option value="terendah">Harga - Terendah ke tertinggi</option>
+        </select>
+        <p class="d-inline float-right">Urutkan berdasarkan : </p>
+      </div>
+    </div>
+    <div 
+      class="d-none justify-content-start"
+      id="orderOptionWrapper2">
+      <p class="">Urutkan berdasarkan : </p>
+      <select 
+        name="" 
+        id="orderOption2"
+        class="ml-2" 
+        v-model="sortingMethod" 
+        @change="selectSortingMethodOnChange()">
+        <option value="bestseller" selected>Bestseller</option>
+        <option value="tertinggi">Harga - Tertinggi ke terendah</option>
+        <option value="terendah">Harga - Terendah ke tertinggi</option>
+      </select>
+    </div>
+    <div class="row second-row">
+      <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+        <div class="filter-wrapper"> <!-- Filter kategori -->
+          <div 
+            class="collapse-header" 
+            id="categoryListCollapseHeader"
+            data-toggle="collapse" 
+            data-target="#categoryList" 
+            aria-expanded="false" 
+            aria-controls="categoryList">
+            <p class="d-inline">Kategori</p>
+            <i 
+              class="fa fa-fw fa-sort-asc d-inline float-right"
+              id="ic-sort-asc-category"></i>
+          </div>
+          <ul class="collapse" id="categoryList">
+            <li 
+              class="li-category"
+              v-for="(category, index) in categories">
+              <div
+                @click="listCategoryOnClickListener(category.namaKategori)"
+                :id="category.namaKategori"
+                class="li-category-child">
+                <p class="d-inline category-name">Nama Kategori</p>
+                <div v-if="categories[index].isUsed === false" class="float-right d-none">
+                  <i class="fa fa-fw fa-check d-inline"></i>
+                </div>
+                <div v-else class="float-right">
+                  <i class="fa fa-fw fa-check d-inline"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <input type="hidden" name="category" id="categoryWrapper" value="">
+        </div>
+
+        <div class="filter-wrapper"> <!-- Filter bahasa -->
+          <div 
+            class="collapse-header" 
+            id="languageListCollapseHeader"
+            data-toggle="collapse" 
+            data-target="#languageList" 
+            aria-expanded="false" 
+            aria-controls="languageList"
+            @click="changeIcSortLanguage()">
+            <p class="d-inline">Bahasa</p>
+            <i 
+              class="fa fa-fw fa-sort-asc d-inline float-right"
+              id="ic-sort-asc-language"></i>
+          </div>
+          <ul class="collapse" id="languageList">
+            <li 
+              class="li-category"
+              id=""
+              v-for="(language, index) in languages">
+              <div
+                @click="listLanguageOnClickListener(language.namaBahasa)">
+                <p class="d-inline category-name">Nama Bahasa</p>
+                <div v-if="languages[index].isUsed === false" class="float-right d-none">
+                  <i class="fa fa-fw fa-check d-inline"></i>
+                </div>
+                <div v-else class="float-right">
+                  <i class="fa fa-fw fa-check d-inline"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <input type="hidden" name="category" id="languageWrapper" value="">
+        </div>
+        
+      </div>
+      <div class="col-xl-10 col-xl-10 col-md-10 col-sm-10 col-10" id="col-book">
+        <div v-if="isInfoBookNotFoundAfterFilterShowed">
+          <h3 class="ml-4 text-info-book-not-found-after-filter">Oops, buku tidak ditemukan</h3>
+        </div>
+        <div id="productRow">
+          <div
+            v-if="isBookFiltered(book.Category, book.Language)">
+            <div 
+              class="row card-book"
+              rating="4.5"
+              id="book">
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+                <img 
+                  src="asset/image/book_cover/4.jpg" 
+                  alt=""
+                  class="ebook-image"
+                  book-id="id">
+              </div>
+              <div class="col-xl-10 col-xl-10 col-md-10 col-sm-10 col-10">
+                <h4
+                  class="book-title"
+                  book-id="">Judul Buku</h4>
+                <p
+                  class="font-weight-bold author-info"><span>Ditulis oleh </span><span class="author-text">Penulis</span></p>
+                <p
+                  class="synopsis">Profound and riveting, this is a 60 poem book collection with poetry that enlightens, speaks the way of life and the world. The poems from Unscrambled Eggs has a universal appeal, and is true to life in form. Unscrambled Eggs was written over a five year period and is an honest and thought-provoking book that deals with everyday life issues. It is a stirring compilation of poems about living your dream and finding one's purpose.</p>
+                <div class="book-rating-container">
+                  <div class="star-container d-inline">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image first-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image second-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image third-star">
+                    <img 
+                      src="asset/ikon/yellow_star.png"
+                      alt=""
+                      class="star-image fourth-star">
+                    <img
+                      src="asset/ikon/blank_star.png"
+                      alt=""
+                      class="star-image fifth-star">
+                  </div>
+                  <p class="d-inline mt-1"><span class="rating">(4.0)</span> &emsp; (<span class="ratingCount">5</span> Ulasan) &emsp; <span class="soldCount">21</span>x terjual</p>
+                </div>
+                <p 
+                  class="price font-weight-bold d-inline"><span class="price">Rp. 24.000</span></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/library/jquery-3.4.1.min.js"></script>
+  <script src="js/library/bootstrap.min.js"></script>
+  <script src="js/general.js"></script>
+  <script src="js/component/navbar.js"></script>
+</body>
+</html>
